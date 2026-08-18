@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart Sistem Berjalan</title>
+    <!-- Load Mermaid JS -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            width: 100%;
+            overflow-x: auto;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Flowchart Sistem Berjalan</h2>
+        <div class="mermaid">
+            flowchart TD
+                classDef default fill:#fff,stroke:#000,stroke-width:1.5px,padding:25px,font-size:16px;
+                classDef document fill:#fff,stroke:#000,stroke-width:1.5px,padding:25px,font-size:16px;
+                classDef database fill:#fff,stroke:#000,stroke-width:1.5px,padding:25px,font-size:16px;
+
+                subgraph KASIR
+                    direction TB
+                    Start(( )) --> A[Menerima pesanan dari pelanggan]
+                    A --> B[Mencatat transaksi penjualan pada buku penjualan]
+                    B --> C[Menghitung total pembayaran secara manual]
+                    C --> D[Menerima pembayaran dari pelanggan]
+                    D --> E[Memberikan struk / nota kepada pelanggan]
+                    E --> F[Mengurangi stok bahan baku pada buku stok secara manual]
+                    F --> G[/Membuat laporan penjualan harian secara manual<br/>(rekap di buku)/]:::document
+                    G --> H[(Data transaksi dan stok bahan baku<br/>tersimpan di buku penjualan<br/>dan buku stok)]:::database
+                    H --> I[/Menyerahkan laporan penjualan<br/>dan informasi stok bahan baku<br/>kepada pemimpin/]:::document
+                end
+
+                subgraph PEMIMPIN
+                    direction TB
+                    J[/Menerima laporan penjualan dan<br/>informasi stok bahan baku dari kasir/]:::document
+                    J --> K[Memeriksa laporan penjualan harian secara manual]
+                    K --> L[Mengecek stok bahan baku berdasarkan catatan di buku stok]
+                    L --> M[Menganalisis hasil penjualan dan kondisi persediaan bahan baku]
+                    M --> N{Stok bahan baku<br/>mencukupi?}
+                    N -- Ya --> O[/Operasional berjalan seperti biasa/]:::document
+                    O --> End1(( ))
+                    N -- Tidak --> P[Memerintahkan kasir / staff untuk<br/>melakukan pembelian bahan baku]
+                    P --> Q[/Memberikan arahan jenis dan jumlah<br/>bahan baku yang dibutuhkan/]:::document
+                    Q --> End2(( ))
+                end
+
+                %% Tautan silang tak terlihat untuk memaksa Kasir dan Pemimpin SEJAJAR (Kiri - Kanan)
+                Start ~~~ J
+                
+                %% Alur dari Kasir ke Pemimpin
+                G --> J
+                I --> J
+                
+                %% Garis kembali ke awal
+                P --> A
+        </div>
+    </div>
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>
