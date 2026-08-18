@@ -320,7 +320,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Rabil Setiady','rabil setiady123','$2y$10$NAViP09CuxJTx4TPuRyu2O5vtF5Dsu0OQvTXj73L.UFlpptwvmTvu','admin',NULL,'2026-07-06 02:20:57','2026-07-06 02:20:57'),(2,'Kasir Cafe','kasir01','$2y$10$ca8h.1t6ZlHAg2geuyMoYuVTVy03QCsokk39ee3GRv7cbbsiM4P2m','kasir',NULL,'2026-07-06 02:20:57','2026-07-06 02:20:57');
+INSERT INTO `users` VALUES (1,'Rabil Setiady','rabil setiady123','$2a$12$iRsO/FKOduAQ4SRok80v8.GVzIxJOX.OZ1DZXI7RZqQ2to5BrXsLS','admin',NULL,'2026-07-06 02:20:57','2026-07-06 02:20:57'),(2,'Kasir Cafe','kasir01','$2y$10$ca8h.1t6ZlHAg2geuyMoYuVTVy03QCsokk39ee3GRv7cbbsiM4P2m','kasir',NULL,'2026-07-06 02:20:57','2026-07-06 02:20:57');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
